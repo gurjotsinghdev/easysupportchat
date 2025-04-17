@@ -1,4 +1,4 @@
-import getSocketServer from '@/lib/socketServer';
+import getSocketServer from '../../../../lib/socketServer';
 
 export function GET(req) {
   if (req.nextUrl.pathname === '/api/socket') {
