@@ -1,102 +1,76 @@
-import Image from "next/image";
+'use client';
+
+import { useRouter } from 'next/navigation';
+
+function generateSupportRoomName() {
+  const number = Math.floor(1000000000 + Math.random() * 9000000000);
+  return `support-${number}`;
+}
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const router = useRouter();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const createChat = () => {
+    const id = generateSupportRoomName();
+    router.push(`/chat/${id}`);
+  };
+
+  return (
+    <div className="min-h-screen bg-white text-gray-900 flex flex-col">
+      {/* Hero / Banner Section */}
+      <section className="flex flex-col justify-center items-center text-center px-6 py-24 bg-gradient-to-br from-gray-100 to-white">
+        <h1 className="text-5xl font-bold mb-4">
+          Welcome to <span className="text-black">SupportChat</span>
+        </h1>
+        <p className="text-lg max-w-2xl mb-8 text-gray-600">
+          Create instant, secure, anonymous chat rooms for customer support. No login required — just click and share the chat link.
+        </p>
+        <button
+          onClick={createChat}
+          className="bg-black text-white hover:bg-white hover:text-black border border-black px-6 py-3 rounded-xl transition"
+        >
+          Start New Support Chat
+        </button>
+      </section>
+
+      {/* Why SupportChat Section */}
+      <section className="py-20 bg-white px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-semibold mb-12">Why SupportChat?</h2>
+          <div className="grid md:grid-cols-3 gap-12 text-left">
+            <div>
+              <h3 className="text-xl font-bold mb-2">⚡ Instant Setup</h3>
+              <p>No login. No dashboard. Just click and start chatting with a unique link.</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-2">🔒 Private by Design</h3>
+              <p>Each chat is anonymous and temporary. No tracking, no saving, no worries.</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-2">📱 Mobile-First</h3>
+              <p>Built for speed and simplicity. Seamless experience on all devices.</p>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </section>
+
+      {/* Call-To-Action Section */}
+      <section className="py-20 px-6 bg-gray-50 text-center">
+        <h2 className="text-3xl font-semibold mb-6">Support made simple.</h2>
+        <p className="text-lg text-gray-600 mb-8">
+          Give your customers what they need — a quick and easy way to reach you.
+        </p>
+        <button
+          onClick={createChat}
+          className="bg-black text-white hover:bg-white hover:text-black border border-black px-6 py-3 rounded-xl transition"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+          Start New Support Chat
+        </button>
+      </section>
+
+      {/* Footer */}
+      <footer className="text-center py-6 text-sm text-gray-400 border-t">
+        © {new Date().getFullYear()} SupportChat · Built for modern customer support
       </footer>
     </div>
   );
